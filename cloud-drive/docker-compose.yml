@@ -1,0 +1,8 @@
+services:
+  drive:
+    build: .
+    ports: ["8083:8083"]
+    volumes: ["./data:/data"]
+    env_file: [".env"]
+    restart: unless-stopped
+# First admin:  docker compose run --rm drive python manage.py create-admin

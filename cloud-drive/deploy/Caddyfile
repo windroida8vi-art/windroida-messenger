@@ -1,0 +1,6 @@
+# HTTPS with automatic certificates (needs a domain pointing at your public IP, ports 80/443 open)
+drive.example.com {
+    request_body { max_size 8MB }   # chunks are 4MB; files are never sent in one request
+    reverse_proxy 127.0.0.1:8083
+}
+# then in .env:  CD_COOKIE_SECURE=1  and  CD_TRUSTED_PROXY=1

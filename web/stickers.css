@@ -1,0 +1,101 @@
+/* animated stickers / emoji (stickers.js). In a message they play 3 loops and rest (battery); in the picker they loop. */
+.stk svg{width:100%;height:100%;display:block;overflow:visible}
+.stk svg *{transform-box:fill-box;transform-origin:center;animation-duration:1.2s;animation-timing-function:cubic-bezier(.45,.05,.35,1);animation-iteration-count:3}
+.stk-pick svg *{animation-iteration-count:infinite}
+.stk-msg{width:150px;height:150px;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.stk-emo{width:112px;height:112px}
+#stkpanel{position:fixed;inset-inline:8px;bottom:70px;max-width:400px;margin-inline:auto;z-index:60;background:var(--panel);border-radius:16px;box-shadow:var(--shadow);padding:10px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;max-height:52vh;overflow-y:auto}
+.stk-pick{background:none;border:0;border-radius:12px;padding:3px;aspect-ratio:1;cursor:pointer;transition:transform .15s,background .15s}
+.stk-pick:hover{background:var(--hover);transform:scale(1.08)}.stk-pick:active{transform:scale(.92)}
+.bubble:has(.stk-msg){background:none!important;box-shadow:none!important}
+.eye{animation-name:kBlink;animation-duration:3.4s;animation-timing-function:ease-in-out}
+.hd-laugh{animation-name:kLaugh;animation-duration:.95s}.sq{animation-name:kSq;animation-duration:.95s}
+.mo-laugh{animation-name:kJaw;animation-duration:.475s;transform-origin:50% 0}
+.tr-l{animation-name:kTrL;animation-duration:.95s}.tr-r{animation-name:kTrR;animation-duration:.95s;animation-delay:.2s}
+.roll{animation-name:kRoll;animation-duration:1.3s}
+.hd-soft{animation-name:kSoft;animation-duration:2.4s}.bl{animation-name:kBlush;animation-duration:2.4s}.mo-smile{animation-name:kSmile;animation-duration:2.4s;transform-origin:50% 0}
+.hd-pop{animation-name:kPop;animation-duration:1.1s;transform-origin:50% 100%}.mo-grin{animation-name:kJaw;animation-duration:.55s;transform-origin:50% 0}
+.hb{animation-name:kBeat;animation-duration:.9s}.hb2{animation-name:kBeat;animation-duration:.9s;animation-delay:.07s}
+.up1{animation-name:kUp;animation-duration:1.8s}.up2{animation-name:kUp;animation-duration:1.8s;animation-delay:.6s}.up3{animation-name:kUp;animation-duration:1.8s;animation-delay:1.1s}
+.orb1{animation-name:kOrb1;animation-duration:2.4s}.orb2{animation-name:kOrb2;animation-duration:2.4s;animation-delay:.4s}.orb3{animation-name:kOrb2;animation-duration:2.4s;animation-delay:1s}
+.wk{animation-name:kWink;animation-duration:1.8s;transform-origin:50% 100%}.mo-kiss{animation-name:kKiss;animation-duration:1.8s}.blow{animation-name:kBlow;animation-duration:1.8s}
+.hd-sob{animation-name:kSob;animation-duration:.5s}.mo-sob{animation-name:kJaw;animation-duration:.5s;transform-origin:50% 0}
+.fl1{animation-name:kFlow;animation-duration:1.4s;transform-origin:50% 0}.fl2{animation-name:kFlow;animation-duration:1.4s;animation-delay:.35s;transform-origin:50% 0}
+.hd-sad{animation-name:kDroop;animation-duration:2.6s}.drop{animation-name:kDrop;animation-duration:2s}
+.hd-plead{animation-name:kPlead;animation-duration:1.6s}.mo-quiver{animation-name:kQuiver;animation-duration:.3s}
+.hd-cool{animation-name:kCool;animation-duration:2s}.glint{animation-name:kGlint;animation-duration:2.4s}
+.tw{animation-name:kTw;animation-duration:1.6s}.tw2{animation-name:kTw;animation-duration:1.6s;animation-delay:.7s}
+.hd-think{animation-name:kThink;animation-duration:2.6s}.look{animation-name:kLook;animation-duration:2.6s}.brw{animation-name:kBrw;animation-duration:2.6s}.q1{animation-name:kQ;animation-duration:2.6s}
+.hd-nerv{animation-name:kNerv;animation-duration:.8s}.sw{animation-name:kSweat;animation-duration:1.6s}
+.hd-rage{animation-name:kRage;animation-duration:.5s}.st1{animation-name:kSteam;animation-duration:1.1s}.st2{animation-name:kSteam;animation-duration:1.1s;animation-delay:.4s}
+.hd-tilt{animation-name:kTilt;animation-duration:2.8s}.pu{animation-name:kRoll2;animation-duration:2.8s}
+.hd-sleep{animation-name:kBreath;animation-duration:2.6s;transform-origin:50% 100%}.mo-sleep{animation-name:kMouthZ;animation-duration:2.6s}.bub{animation-name:kBub;animation-duration:2.6s;transform-origin:0 50%}
+.z1{animation-name:kZ;animation-duration:2.4s}.z2{animation-name:kZ;animation-duration:2.4s;animation-delay:.8s}
+.hd-scream{animation-name:kScream;animation-duration:.7s}.mo-scream{animation-name:kJaw;animation-duration:.7s;transform-origin:50% 0}.lines{animation-name:kLines;animation-duration:.7s}
+.pom{animation-name:kPom;animation-duration:.55s}
+.cf1{animation-name:kConf;animation-duration:1.8s}.cf2{animation-name:kConf;animation-duration:1.8s;animation-delay:.35s}.cf3{animation-name:kConf;animation-duration:1.8s;animation-delay:.7s}.cf4{animation-name:kConf;animation-duration:1.8s;animation-delay:1.05s}.cf5{animation-name:kConf;animation-duration:1.8s;animation-delay:.15s}
+.hb-big{animation-name:kHeart;animation-duration:1.1s}
+.bk-l{animation-name:kBkL;animation-duration:1.6s}.bk-r{animation-name:kBkR;animation-duration:1.6s}
+.fi1{animation-name:kFire;animation-duration:.9s;transform-origin:50% 100%}.fi2{animation-name:kFire;animation-duration:.6s;animation-delay:.1s;transform-origin:50% 100%}
+.sp1{animation-name:kSpark;animation-duration:1.4s}.sp2{animation-name:kSpark;animation-duration:1.4s;animation-delay:.5s}.sp3{animation-name:kSpark;animation-duration:1.4s;animation-delay:.9s}
+.th{animation-name:kThumb;animation-duration:1.5s;transform-origin:20% 100%}
+.pr{animation-name:kPray;animation-duration:1.8s}
+.cl-l{animation-name:kClapL;animation-duration:.6s}.cl-r{animation-name:kClapR;animation-duration:.6s}.ray{animation-name:kRay;animation-duration:.6s}
+.gh{animation-name:kFloat;animation-duration:2.4s}
+@keyframes kBlink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.08)}}
+@keyframes kLaugh{0%,100%{transform:rotate(0) scale(1)}15%{transform:rotate(-7deg) scale(1.05,.95)}30%{transform:rotate(6deg) scale(.97,1.04)}45%{transform:rotate(-6deg) scale(1.05,.95)}60%{transform:rotate(5deg) scale(.98,1.03)}80%{transform:rotate(-2deg)}}
+@keyframes kSq{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.8)}}
+@keyframes kJaw{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.62)}}
+@keyframes kTrL{0%{transform:translate(0,0) scale(.6);opacity:0}15%{opacity:1;transform:translate(-4px,-2px) scale(1)}100%{transform:translate(-22px,18px) scale(.9);opacity:0}}
+@keyframes kTrR{0%{transform:translate(0,0) scale(.6);opacity:0}15%{opacity:1;transform:translate(4px,-2px) scale(1)}100%{transform:translate(22px,18px) scale(.9);opacity:0}}
+@keyframes kRoll{0%,100%{transform:rotate(-86deg) translateY(0)}20%{transform:rotate(-74deg) translateY(-7px)}40%{transform:rotate(-98deg) translateY(2px)}60%{transform:rotate(-78deg) translateY(-6px)}80%{transform:rotate(-92deg) translateY(1px)}}
+@keyframes kSoft{0%,100%{transform:rotate(-3deg) translateY(1px)}50%{transform:rotate(3deg) translateY(-3px)}}
+@keyframes kBlush{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes kSmile{0%,100%{transform:scale(1,1)}50%{transform:scale(1.06,1.14)}}
+@keyframes kPop{0%,100%{transform:scale(1)}18%{transform:scale(1.1,.92)}36%{transform:scale(.95,1.07)}54%{transform:scale(1.04,.98)}72%{transform:scale(1)}}
+@keyframes kBeat{0%,100%{transform:scale(1)}25%{transform:scale(1.28)}50%{transform:scale(.96)}70%{transform:scale(1.12)}}
+@keyframes kUp{0%{transform:translateY(10px) scale(.4);opacity:0}25%{opacity:1}100%{transform:translateY(-38px) scale(1.2);opacity:0}}
+@keyframes kOrb1{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(18px,8px) scale(1.2)}50%{transform:translate(0,14px) scale(.9)}75%{transform:translate(-18px,8px) scale(1.2)}}
+@keyframes kOrb2{0%,100%{transform:translate(0,0) scale(1);opacity:1}50%{transform:translate(0,-14px) scale(1.3);opacity:.7}}
+@keyframes kWink{0%,35%,100%{transform:scaleY(1)}45%,65%{transform:scaleY(.2)}}
+@keyframes kKiss{0%,30%,100%{transform:scale(1)}45%,60%{transform:scale(1.45,1.25)}}
+@keyframes kBlow{0%,35%{transform:translate(-6px,4px) scale(.2);opacity:0}50%{opacity:1}100%{transform:translate(30px,-26px) scale(1.3);opacity:0}}
+@keyframes kSob{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(-1.5px,1px) rotate(-1.5deg)}75%{transform:translate(1.5px,0) rotate(1.5deg)}}
+@keyframes kFlow{0%{transform:scaleY(0);opacity:.9}55%{transform:scaleY(1);opacity:.9}100%{transform:scaleY(1) translateY(22px);opacity:0}}
+@keyframes kDroop{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(4px) rotate(-2deg)}}
+@keyframes kDrop{0%{transform:translateY(-6px) scale(.5);opacity:0}20%{opacity:1;transform:translateY(0) scale(1)}100%{transform:translateY(26px) scale(.9);opacity:0}}
+@keyframes kPlead{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+@keyframes kQuiver{0%,100%{transform:translateX(0)}25%{transform:translateX(-1.6px)}75%{transform:translateX(1.6px)}}
+@keyframes kCool{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@keyframes kGlint{0%,40%{transform:translateX(-14px);opacity:0}55%{opacity:.7}85%,100%{transform:translateX(48px);opacity:0}}
+@keyframes kTw{0%,100%{transform:scale(.2) rotate(0);opacity:0}50%{transform:scale(1.15) rotate(45deg);opacity:1}}
+@keyframes kThink{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(3deg)}}
+@keyframes kLook{0%,100%{transform:translate(-3px,-2px)}50%{transform:translate(3px,-3px)}}
+@keyframes kBrw{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes kQ{0%,20%{transform:scale(0) rotate(-20deg);opacity:0}45%{transform:scale(1.25) rotate(8deg);opacity:1}60%,85%{transform:scale(1) rotate(0);opacity:1}100%{transform:scale(.6);opacity:0}}
+@keyframes kNerv{0%,100%{transform:rotate(0)}25%{transform:rotate(-2deg) translateX(-1px)}75%{transform:rotate(2deg) translateX(1px)}}
+@keyframes kSweat{0%{transform:translateY(-6px) scale(.5);opacity:0}25%{opacity:1;transform:translateY(0) scale(1)}100%{transform:translateY(24px);opacity:0}}
+@keyframes kRage{0%,100%{transform:translate(0,0) scale(1)}20%{transform:translate(-2px,1px) scale(1.03)}40%{transform:translate(2px,-1px) scale(1.04)}60%{transform:translate(-2px,0) scale(1.03)}80%{transform:translate(2px,1px) scale(1.04)}}
+@keyframes kSteam{0%{transform:translateY(10px) scaleY(.4);opacity:0}40%{opacity:1}100%{transform:translateY(-16px) scaleY(1.3);opacity:0}}
+@keyframes kTilt{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes kRoll2{0%,100%{transform:translate(0,0)}15%{transform:translate(7px,-6px)}35%{transform:translate(0,-9px)}55%{transform:translate(-7px,-6px)}75%{transform:translate(0,2px)}}
+@keyframes kBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.05,1.03)}}
+@keyframes kMouthZ{0%,100%{transform:scale(.8)}50%{transform:scale(1.3,1.15)}}
+@keyframes kBub{0%,100%{transform:scale(.3);opacity:.2}60%{transform:scale(1.7);opacity:.7}70%{transform:scale(.2);opacity:0}}
+@keyframes kZ{0%{transform:translate(0,12px) scale(.5);opacity:0}30%{opacity:1}100%{transform:translate(10px,-18px) scale(1.2);opacity:0}}
+@keyframes kScream{0%,100%{transform:scale(1,1)}30%{transform:scale(1.04,1.09)}60%{transform:scale(.99,1.04)}}
+@keyframes kLines{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+@keyframes kPom{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes kConf{0%{transform:translateY(-14px) rotate(0);opacity:0}15%{opacity:1}100%{transform:translateY(84px) rotate(260deg);opacity:0}}
+@keyframes kHeart{0%,100%{transform:scale(1)}15%{transform:scale(1.16)}30%{transform:scale(.97)}45%{transform:scale(1.1)}70%{transform:scale(1)}}
+@keyframes kBkL{0%,25%{transform:translate(0,0) rotate(0)}50%{transform:translate(-9px,6px) rotate(-9deg)}75%{transform:translate(-9px,6px) rotate(-9deg)}100%{transform:translate(0,0) rotate(0)}}
+@keyframes kBkR{0%,25%{transform:translate(0,0) rotate(0)}50%{transform:translate(9px,8px) rotate(11deg)}75%{transform:translate(9px,8px) rotate(11deg)}100%{transform:translate(0,0) rotate(0)}}
+@keyframes kFire{0%,100%{transform:scale(1,1) skewX(0)}25%{transform:scale(.94,1.08) skewX(-3deg)}55%{transform:scale(1.05,.95) skewX(3deg)}80%{transform:scale(.98,1.05) skewX(-1deg)}}
+@keyframes kSpark{0%{transform:translateY(8px) scale(.4);opacity:0}25%{opacity:1}100%{transform:translateY(-34px) scale(1);opacity:0}}
+@keyframes kThumb{0%,100%{transform:rotate(0) translateY(0) scale(1)}25%{transform:rotate(-16deg) translateY(-8px) scale(1.06)}50%{transform:rotate(5deg) translateY(1px) scale(.98)}70%{transform:rotate(-3deg)}}
+@keyframes kPray{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.07) translateY(-4px)}}
+@keyframes kClapL{0%,100%{transform:translateX(-7px) rotate(-8deg)}50%{transform:translateX(7px) rotate(4deg)}}
+@keyframes kClapR{0%,100%{transform:translateX(7px) rotate(8deg)}50%{transform:translateX(-7px) rotate(-4deg)}}
+@keyframes kRay{0%,40%,100%{opacity:0;transform:scale(.7)}55%{opacity:1;transform:scale(1.2)}}
+@keyframes kFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-11px) rotate(2deg)}}
+@media (prefers-reduced-motion:reduce){.stk svg *{animation:none!important}}

@@ -1,0 +1,20 @@
+-- 009: حساب خصوصی، بلاک/میوت، دوستان نزدیک، استیکر نظرسنجی، کاروسل، آمار پست، هایلایت، کالکشن، پیام صوتی/عکس/واکنش
+alter table users add column private integer default 0;
+create table if not exists blocks(blocker integer references users(id) on delete cascade, blocked integer references users(id) on delete cascade, primary key(blocker, blocked));
+create table if not exists mutes(user_id integer references users(id) on delete cascade, muted integer references users(id) on delete cascade, primary key(user_id, muted));
+create table if not exists follow_requests(requester integer references users(id) on delete cascade, target integer references users(id) on delete cascade, created real, primary key(requester, target));
+create table if not exists close_friends(owner integer references users(id) on delete cascade, friend integer references users(id) on delete cascade, primary key(owner, friend));
+alter table stories add column audience text default 'all';
+alter table stories add column sticker text;
+create table if not exists story_votes(story_id integer references stories(id) on delete cascade, user_id integer references users(id) on delete cascade, choice integer, primary key(story_id, user_id));
+alter table posts add column nmedia integer default 1;
+create table if not exists post_media(id integer primary key, post_id integer references posts(id) on delete cascade, file text, mid text, poster text, pos integer);
+create index if not exists idx_pm_post on post_media(post_id, pos);
+create table if not exists impressions(post_id integer references posts(id) on delete cascade, user_id integer references users(id) on delete cascade, created real, primary key(post_id, user_id));
+create table if not exists highlights(id integer primary key, user_id integer references users(id) on delete cascade, title text, created real);
+create table if not exists highlight_items(highlight_id integer references highlights(id) on delete cascade, story_id integer references stories(id) on delete cascade, pos integer, primary key(highlight_id, story_id));
+create table if not exists collections(id integer primary key, user_id integer references users(id) on delete cascade, name text, created real);
+create table if not exists collection_items(collection_id integer references collections(id) on delete cascade, post_id integer references posts(id) on delete cascade, created real, primary key(collection_id, post_id));
+alter table messages add column kind text default 'text';
+alter table messages add column media text;
+create table if not exists message_reactions(message_id integer references messages(id) on delete cascade, user_id integer references users(id) on delete cascade, emoji text, primary key(message_id, user_id));

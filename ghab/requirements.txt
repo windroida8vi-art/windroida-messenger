@@ -1,0 +1,4 @@
+flask
+cryptography
+pillow
+imageio-ffmpeg

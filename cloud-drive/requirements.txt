@@ -1,0 +1,4 @@
+# Minimal on purpose: only 3 packages, all pure Python or with wheels for Windows/Linux.
+Flask>=3.0,<4
+waitress>=3.0          # production WSGI server (works fine on Windows)
+argon2-cffi>=23.1      # Argon2id password hashing (optional: falls back to stdlib scrypt if missing)
